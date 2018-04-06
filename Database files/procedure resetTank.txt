@@ -1,0 +1,14 @@
+DELIMITER //
+CREATE PROCEDURE resetTank()
+BEGIN
+	DELETE FROM Tank WHERE ID = 1;
+	SET @var = 0;
+	UPDATE Tank SET ID = (@var := @var + 1);
+	ALTER TABLE Tank AUTO_INCREMENT = 1;
+END //
+DELIMITER ;
+
+//////////////////////////////////////////////////////////
+(To run the procedure)
+CALL resetTank();
+
